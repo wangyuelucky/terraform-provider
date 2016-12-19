@@ -1,3 +1,8 @@
+
+variable "region" {
+  default = "cn-beijing"
+}
+
 variable "ecs_password" {
   default = "Test12345"
 }
@@ -17,10 +22,6 @@ variable "short_name" {
 }
 variable "ssh_username" {
   default = "root"
-}
-
-variable "region" {
-  default = "cn-beijing"
 }
 
 variable "secrity_group" {
@@ -43,7 +44,7 @@ provider "alicloud" {
 }
 
 module "worker-nodes" {
-  source = "./terraform/samples/instance"
+  source = "./terraform/examples/alicloud-ecs"
   count = "${var.worker_count}"
   count_format = "${var.worker_count_format}"
   role = "worker"
